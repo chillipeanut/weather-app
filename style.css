@@ -1,4 +1,117 @@
-h1 {
+body {
+  background-image: url("src/unsplash-clouds.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 600px;
+  width: 600px;
+  max-width: 600px;
+  display: block;
+  margin: 10px auto 100px auto;
+}
+
+.form {
+  padding: 10px 5px 10px 5px;
   text-align: center;
-  color: red;
+}
+.card {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0.4;
+  padding: 8px 15px;
+  max-width: 350px;
+}
+.card-body {
+  padding: 0;
+  text-align: center;
+}
+
+.col-6 {
+  text-align: center;
+  color: #ebeffc;
+  font-family: var(--bs-font-sans-serif);
+}
+.city {
+  font-size: 58px;
+  padding: 20px 0 0 15px;
+  font-family: var(--bs-font-sans-serif);
+  font-weight: 500;
+  width: 240px;
+}
+
+.time {
+  font-size: 18px;
+  text-align: center;
+  color: #ebeffc;
+}
+a {
+  color: #ebeffc;
+}
+.units {
+  color: #ebeffc;
+}
+.details {
+  padding: 40px 0 0 0;
+  font-size: 18px;
+  text-align: right;
+}
+.col-6 {
+  text-align: right;
+}
+h1 {
+  padding: 20px 0 0 32px;
+  color: #ebeffc;
+  font-size: 58px;
+  max-width: 200px;
+  margin-bottom: 0;
+}
+h2 {
+  color: #ebeffc;
+  font-size: 28px;
+  padding: 0 0 0 35px;
+  max-width: 200px;
+  margin-bottom: 0;
+  display: inline;
+}
+.units {
+  color: #ebeffc;
+  font-size: 28px;
+}
+h4 {
+  color: #ebeffc;
+  font-size: 18px;
+  padding: 0 0 0 35px;
+  margin-bottom: 0;
+}
+
+.fa-cloud-sun {
+  color: #ebeffc;
+  font-size: 150px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  max-width: 150px;
+  padding: 0;
+}
+.align-items-start {
+  width: 500px;
+  margin-left: 24px;
+}
+
+.day {
+  color: #ebeffc;
+  text-align: left;
+  font-size: 18px;
+}
+.emoji {
+  color: #ebeffc;
+  text-align: center;
+  font-size: 18px;
+  padding-left: 40px;
+}
+.temp {
+  color: #ebeffc;
+  text-align: right;
+  font-size: 18px;
+  padding-right: 0px;
 }
