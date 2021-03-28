@@ -7,6 +7,8 @@ body {
   max-width: 600px;
   display: block;
   margin: 10px auto 10px auto;
+  font-family: var(--bs-font-sans-serif);
+  color: #ebeffc;
 }
 
 .form {
@@ -30,9 +32,9 @@ body {
   text-align: center;
 }
 
-.city {
-  font-size: 43px;
-  padding: 20px 0 0 15px;
+.overview {
+  font-size: 18px;
+  padding: 40px 0 0 15px;
   font-family: var(--bs-font-sans-serif);
   font-weight: 500;
   width: 240px;
@@ -47,8 +49,9 @@ body {
 }
 
 #top-row {
-  height: 150px;
+  height: 120px;
 }
+
 a {
   color: #ebeffc;
 }
@@ -63,6 +66,7 @@ a {
 
 li {
   list-style: none;
+  font-weight: 400;
 }
 
 h1 {
@@ -74,19 +78,18 @@ h1 {
 }
 h2 {
   color: #ebeffc;
-  font-size: 28px;
+  font-size: 18px;
   padding: 0 0 0 5px;
   max-width: 200px;
   margin-bottom: 0;
   display: inline;
 }
-.units {
-  color: #ebeffc;
-  font-size: 28px;
+.high-low {
+  font-size: 18px;
 }
+
 h4 {
   color: #ebeffc;
-  font-size: 18px;
   padding: 0 0 0 5px;
   margin-bottom: 0;
 }
