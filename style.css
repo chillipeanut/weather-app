@@ -10,8 +10,12 @@ body {
 }
 
 .form {
-  padding: 10px 5px 10px 5px;
+  padding: 10px 10px 10px 5px;
   text-align: center;
+  display: inline;
+}
+.pin {
+  display: inline;
 }
 .card {
   display: block;
@@ -19,24 +23,21 @@ body {
   text-align: center;
   opacity: 0.4;
   padding: 8px 15px;
-  max-width: 350px;
+  max-width: 450px;
 }
 .card-body {
   padding: 0;
   text-align: center;
 }
 
-.col-6 {
-  text-align: center;
-  color: #ebeffc;
-  font-family: var(--bs-font-sans-serif);
-}
 .city {
-  font-size: 58px;
+  font-size: 43px;
   padding: 20px 0 0 15px;
   font-family: var(--bs-font-sans-serif);
   font-weight: 500;
   width: 240px;
+  text-align: left;
+  color: #ebeffc;
 }
 
 .time {
@@ -44,31 +45,37 @@ body {
   text-align: center;
   color: #ebeffc;
 }
+
+#top-row {
+  height: 150px;
+}
 a {
   color: #ebeffc;
 }
-.units {
-  color: #ebeffc;
-}
+
 .details {
   padding: 40px 0 0 0;
   font-size: 18px;
   text-align: right;
-}
-.col-6 {
-  text-align: right;
-}
-h1 {
-  padding: 20px 0 0 32px;
   color: #ebeffc;
-  font-size: 58px;
-  max-width: 200px;
-  margin-bottom: 0;
+  font-family: var(--bs-font-sans-serif);
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  color: #ebeffc;
+  font-size: 50px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 h2 {
   color: #ebeffc;
   font-size: 28px;
-  padding: 0 0 0 35px;
+  padding: 0 0 0 5px;
   max-width: 200px;
   margin-bottom: 0;
   display: inline;
@@ -80,7 +87,7 @@ h2 {
 h4 {
   color: #ebeffc;
   font-size: 18px;
-  padding: 0 0 0 35px;
+  padding: 0 0 0 5px;
   margin-bottom: 0;
 }
 

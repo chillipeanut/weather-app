@@ -30,31 +30,47 @@
 <input type="search" placeholder="Enter location" id="location-input"/>
 <input type="submit" value="search"/>
         </form>  
-        <button id=current-location> Current Location </button>
+        <button id=current-location class="pin"> 📍 </button>
       </div>
     </div>
+  </br>
     <div class="time"> </div>
-
+<h1 id="city-display">Dublin</h1>
     
-      <div class="row">
-        <div class="col-6 city" id="city-display">
-          
-        </div>
-        <div class="col-6 details" id="details">
-        </br> Partly cloudy </br> UV Index 0
-        </div>
-      </div>
-      </br>
-      <h2 class="temperature"></h2>
+      <div class="row" id="top-row">
+        <div class="col-6 city" >
+           <h2 class="temperature"></h2>
       <span class="units"/>
       <a href="#" id="celsius-link">°C</a> |
       <a href="#" id="fahrenheit-link">°F</a>
       <h4>High 5°C | Low 3°C</h4>
+        </div>
+        <div class="col-6 details" id="detail">
+          <ul>
+            <li>
+              Clear
+            </li>
+            <li>
+              Precipitation: 0%
+            </li>
+            <li>
+              Humidity: 73%
+            </li>
+            <li>
+              Wind: 2 km/h
+            </li>
+            <li>
+              UV Index 0
+            </li>
+          </ul>
+        </div>
+      </div>
+     
 
       <div>
       <i class="fas fa-cloud-sun"></i>
        </br> </br
-      </div>
+      </div> 
      
       <div class="row align-items-start">
         <div class="col-4 day">
