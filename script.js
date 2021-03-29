@@ -25,67 +25,25 @@ time.innerHTML = `${day} ${date} ${month} ${hours}:${minutes}`;
 
 //
 
-function makeFahrenheit(event) {
-  event.preventDefault();
-  let tempToFahrenheit = document.querySelector(".temperature");
-  let temperature = tempToFahrenheit.innerHTML;
-  tempToFahrenheit.innerHTML = Math.round((temperature * 9) / 5 + 32);
-}
-
-function makeCelsius(event) {
-  event.preventDefault();
-  let tempToCelsius = document.querySelector(".temperature");
-  let temperature = tempToCelsius.innerHTML;
-  tempToCelsius.innerHTML = Math.round(((temperature - 32) * 5) / 9);
-}
-
-let temperatureFahrenheit = document.querySelector("#fahrenheit-link");
-temperatureFahrenheit.addEventListener("click", makeFahrenheit);
-
-let temperatureCelsius = document.querySelector("#celsius-link");
-temperatureCelsius.addEventListener("click", makeCelsius);
-
-function displayWeatherCondition(response) {
+function displayTemperature(response) {
   console.log(response.data);
-  document.querySelector("#city-display").innerHTML = response.data.name;
-  document.querySelector("#details").innerHTML = response.data.weather[0].main;
-  document.querySelector(".temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  let temperatureElement = document.querySelector(".temperature");
+  let cityElement = document.querySelector("#city-display");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let highElement = document.querySelector("#high");
+  let lowElement = document.querySelector("#low");
+  let windElement = document.querySelector("#wind");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  highElement.innerHTML = Math.round(response.data.main.temp_max);
+  lowElement.innerHTML = Math.round(response.data.main.temp_min);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-function showPosition(position) {
-  console.log(position);
-  let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
+let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Dublin,IE&appid=${apiKey}&units=metric`;
 
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-let currentLocationButton = document.querySelector("#current-location");
-currentLocationButton.addEventListener("click", getCurrentLocation);
-
-function handleSubmit(event) {
-  event.preventDefault();
-  let city = document.querySelector("#location-input").value;
-  let cityName = document.querySelector("#city-display");
-  cityName.innerHTML = `${city}`;
-  search(city);
-}
-
-function search(city) {
-  let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
-
-let searchForm = document.querySelector(".form");
-searchForm.addEventListener("submit", handleSubmit);
-
-search("Dublin");
+axios.get(apiUrl).then(displayTemperature);

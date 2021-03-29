@@ -20,8 +20,7 @@
 
   <body>
     <div class="container">
-     
-    </br>
+     <div class="time"> </div>
     <div class="card">
       <div class="card-body">
        
@@ -33,8 +32,7 @@
         <button id=current-location class="pin">📍</button>
       </div>
     </div>
-  </br>
-    <div class="time"> </div>
+  </br>    
 <h1 id="city-display">Dublin</h1>
     
       <div class="row" id="top-row">
@@ -48,25 +46,21 @@
             </span>
       </li>
       </li>
-      <li class="high-low">High 5°C | Low 3°C</li>
-      <li id="details">
+      <li>High <span id="high"></span>°C | Low <span id="low"></span>°C</li>
+      <li id="description">
         Clear
       </li>
       </ul>
         </div>
         <div class="col-6 details">
           <ul>
-            
             <li>
-              Precipitation: 0%
+              Humidity: <span id="humidity"></span> %
             </li>
             <li>
-              Humidity: 73%
+              Wind: <span id="wind"></span> km/h
             </li>
-            <li>
-              Wind: 2 km/h
-            </li>
-            <li>
+            <li id="uvIndex">
         UV Index: 0
       </li>
             
