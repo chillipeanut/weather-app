@@ -1,5 +1,5 @@
 body {
-  background-image: url("unsplash-clouds.jpg");
+  background-image: url("images/unsplash-clouds.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 600px;
@@ -98,7 +98,10 @@ h4 {
   margin-bottom: 0;
 }
 
-.fa-cloud-sun {
+img {
+  color: #ebeffc;
+}
+#icon {
   color: #ebeffc;
   font-size: 150px;
   text-align: center;
