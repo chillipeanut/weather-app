@@ -97,3 +97,24 @@ function getIcon(icon) {
   }
   return iconElement;
 }
+
+// Search Form
+
+let searchForm = document.querySelector(".form");
+searchForm.addEventListener("submit", handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#location-input").value;
+  let cityElement = document.querySelector("#city-display");
+  cityElement.innerHTML = `${city}`;
+  search(city);
+}
+
+function search(city) {
+  let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+search("Dublin,IE");

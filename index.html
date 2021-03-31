@@ -26,7 +26,7 @@
        
     
         <form class="form"> 
-<input type="search" placeholder="Enter location" id="location-input"/>
+<input type="search" placeholder="Enter location" id="location-input" autocomplete="off"/>
 <input type="submit" value="search"/>
         </form>  
         <button id=current-location class="pin">📍</button>
@@ -46,15 +46,16 @@
             </span>
       </li>
       </li>
-      <li id="description">
-        Clear
-      </li>
+      
       <li>High <span id="high"></span>°C | Low <span id="low"></span>°C</li>
       
       </ul>
         </div>
         <div class="col-6 details">
           <ul>
+            <li id="description">
+        Clear
+      </li>
             <li>
               Humidity: <span id="humidity"></span> %
             </li>
