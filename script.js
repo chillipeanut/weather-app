@@ -1,3 +1,5 @@
+// Time Display
+
 let now = new Date();
 let months = [
   "Jan",
@@ -29,7 +31,7 @@ if (minutes < 10) {
 
 time.innerHTML = `${day} ${date} ${month} ${hours}:${minutes}`;
 
-//
+// Weather display
 
 function displayTemperature(response) {
   console.log(response.data);
@@ -41,6 +43,9 @@ function displayTemperature(response) {
   let lowElement = document.querySelector("#low");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
+
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -57,7 +62,8 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
 
 axios.get(apiUrl).then(displayTemperature);
 
-//define icons
+//Define Icons
+
 function getIcon(icon) {
   let iconElement = "";
   if (icon === "03d" || icon === "03n") {
@@ -115,6 +121,52 @@ function search(city) {
   let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
+}
+
+//Current Location button
+
+let currentLocationButton = document.querySelector("#current-location");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+function showPosition(position) {
+  console.log(position);
+  let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+// Celsius to Fahrenheit conversion
+
+let celsiusTemperature = null;
+
+let temperatureFahrenheit = document.querySelector("#fahrenheit-link");
+temperatureFahrenheit.addEventListener("click", makeFahrenheit);
+
+function makeFahrenheit(event) {
+  event.preventDefault();
+  temperatureCelsius.classList.remove("active");
+  temperatureFahrenheit.classList.add("active");
+  let tempToFahrenheit = document.querySelector(".temperature");
+  let temperature = (celsiusTemperature * 9) / 5 + 32;
+  tempToFahrenheit.innerHTML = Math.round(temperature);
+}
+
+let temperatureCelsius = document.querySelector("#celsius-link");
+temperatureCelsius.addEventListener("click", makeCelsius);
+
+function makeCelsius(event) {
+  event.preventDefault();
+  temperatureCelsius.classList.add("active");
+  temperatureFahrenheit.classList.remove("active");
+  let tempToCelsius = document.querySelector(".temperature");
+  tempToCelsius.innerHTML = Math.round(celsiusTemperature);
 }
 
 search("Dublin,IE");
