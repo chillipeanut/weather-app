@@ -38,7 +38,7 @@
       <div class="row" id="top-row">
         <div class="col-6 overview" >
           <ul>
-            <li>
+            <li id="main-temp">
       <strong class="temperature"></strong>
       <span class="units">
       <a href="#" id="celsius-link" class="active">°C</a> |
@@ -48,14 +48,18 @@
       </li>
       
       <li>High <span id="high"></span>°C | Low <span id="low"></span>°C</li>
+       <li id="description">
+        Clear
+      </li>
       
       </ul>
         </div>
         <div class="col-6 details">
           <ul>
-            <li id="description">
-        Clear
-      </li>
+           
+      <li>
+              Precipitation: <span id="precipitation">0</span> %
+            </li>
             <li>
               Humidity: <span id="humidity"></span> %
             </li>
