@@ -16,8 +16,8 @@ let months = [
   "Dec",
 ];
 let time = document.querySelector(".time");
-let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-let day = days[now.getDay()];
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let currentDay = days[now.getDay()];
 let month = months[now.getMonth()];
 let date = now.getDate();
 let hours = now.getHours();
@@ -29,9 +29,16 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-time.innerHTML = `${day} ${date} ${month} ${hours}:${minutes}`;
+time.innerHTML = `${currentDay} ${date} ${month} ${hours}:${minutes}`;
 
 // Weather display
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayTemperature(response) {
   console.log(response.data);
@@ -54,6 +61,8 @@ function displayTemperature(response) {
   lowElement.innerHTML = Math.round(response.data.main.temp_min);
   windElement.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute("src", getIcon(response.data.weather[0].icon));
+
+  getForecast(response.data.coord);
 }
 
 let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
@@ -167,6 +176,51 @@ function makeCelsius(event) {
   temperatureFahrenheit.classList.remove("active");
   let tempToCelsius = document.querySelector(".temperature");
   tempToCelsius.innerHTML = Math.round(celsiusTemperature);
+}
+
+// Forecast
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `    
+<div class="col-4 day">
+          ${formatDay(forecastDay.dt)} </br> </br>
+        </div>
+      
+        <div class="col-4 emoji">
+          ${getIcon(forecastDay.weather[0].icon)} </br> </br> 
+        </div>
+
+        <div class="col-4 temp">
+         ${Math.round(forecastDay.temp.day)}°C</br> </br> 
+      </div>`;
+    }
+  });
+
+  forecastElement.innerHTML = forecastHTML;
 }
 
 search("Dublin,IE");
