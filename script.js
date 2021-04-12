@@ -199,10 +199,12 @@ function formatDay(timestamp) {
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
+  let maxTemp = null;
+  let minTemp = null;
 
   let forecastHTML = "";
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index > 0 && index < 6) {
       forecastHTML =
         forecastHTML +
         `    
@@ -210,12 +212,17 @@ function displayForecast(response) {
           ${formatDay(forecastDay.dt)} </br> </br>
         </div>
       
-        <div class="col-4 emoji">
-          ${getIcon(forecastDay.weather[0].icon)} </br> </br> 
+        <div class="col-4 id=forecast-emoji" style="padding-right: 0px; padding-top: 6px; padding-left: 20px;">
+          <img src="${getIcon(
+            forecastDay.weather[0].icon
+          )}" id="forecast-icon"  /> </br> </br> 
         </div>
 
         <div class="col-4 temp">
-         ${Math.round(forecastDay.temp.day)}°C</br> </br> 
+         ${(maxTemp = Math.round(forecastDay.temp.max))}°C |   
+          <span id=minTemp>${(minTemp = Math.round(
+            forecastDay.temp.min
+          ))}°C</span></br> </br> 
       </div>`;
     }
   });
