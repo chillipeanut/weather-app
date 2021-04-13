@@ -79,7 +79,7 @@ axios.get(apiUrl).then(displayTemperature);
 //Define Icons
 
 function getIcon(icon) {
-  let iconElement = document.querySelector("#icon");
+  let iconElement = document.querySelector("#icon", "#forecast-icon");
   if (icon === "03d") {
     iconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`; //scattered clouds day
   } else if (icon === "03n") {
@@ -220,9 +220,9 @@ function displayForecast(response) {
         </div>
       
         <div class="col-4 id=forecast-emoji" style="padding-right: 0px; padding-top: 6px; padding-left: 20px;">
-          <img src="${getIcon(
+          <span id=#forecast-icon">${getIcon(
             forecastDay.weather[0].icon
-          )}" id="forecast-icon" /> </br> </br> 
+          )}<span/> </br> </br> 
         </div>
 
         <div class="col-4 temp">
