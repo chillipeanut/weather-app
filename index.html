@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container" id="background-image" style="background-image: url('Images/unsplash-clouds.jpg');">
      <div class="time"> </div>
     <div class="card">
       <div class="card-body">
@@ -32,39 +32,43 @@
         <button id=current-location class="pin">📍</button>
       </div>
     </div>
-  </br>    
-<h1 id="city-display">Dublin</h1>
-    
-      <div class="row" id="top-row">
-        <div class="col-6 overview" >
-          <ul>
-            <li id="main-temp">
+  </br>
+<h1 id="city-display">St Peter Port</h1>
+<h6 id="main-temp">
+  
       <strong class="temperature"></strong>
       <span class="units">
       <a href="#" id="celsius-link" class="active">°C</a> |
       <a href="#" id="fahrenheit-link">°F</a>
             </span>
-      </li>
-      </li>
-      
-      <li>High <span id="high"></span>°C | Low <span id="low"></span>°C</li>
-       <li id="description">
+            
+          </br>
+          
+      <span id="description">
         Clear
+      </span>
+    </h6>
+    
+      <div class="row" id="top-row">
+        <div class="col-6 overview" id="left">
+          <ul>
+            
       </li>
+       <li id="feels-like">
+    Feels like: 10°
+ </li>
+      <li>High <span id="high"></span>°C  |  Low <span id="low"></span>°C</li>
+       
       
       </ul>
         </div>
         <div class="col-6 details">
           <ul>
-           
-      <li>
-              Precipitation: <span id="precipitation">0</span> %
+            <li>
+              Humidity:  <span id="humidity"></span> %
             </li>
             <li>
-              Humidity: <span id="humidity"></span> %
-            </li>
-            <li>
-              Wind: <span id="wind"></span> km/h
+              Wind:  <span id="wind"></span> km/h
             </li>
             
             
@@ -73,9 +77,8 @@
       </div>
      
 
-      <div id=>
-      <img src="" id="icon"/>
-       </br> </br>
+      <div id="icon">
+      
       </div>
      
       <div class="row align-items-start" id="forecast" >
@@ -89,7 +92,7 @@
 
   </div>
       </div>
+    
       <script src="script.js"></script>
   </body>
 </html>
-

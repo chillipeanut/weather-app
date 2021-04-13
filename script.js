@@ -49,9 +49,14 @@ function displayTemperature(response) {
   let highElement = document.querySelector("#high");
   let lowElement = document.querySelector("#low");
   let windElement = document.querySelector("#wind");
+  let feelsLikeElement = document.querySelector("#feels-like");
   let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = response.data.main.temp;
+
+  feelsLikeElement.innerHTML = `Feels Like:  ${Math.round(
+    response.data.main.feels_like
+  )}°C`;
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
@@ -60,13 +65,13 @@ function displayTemperature(response) {
   highElement.innerHTML = Math.round(response.data.main.temp_max);
   lowElement.innerHTML = Math.round(response.data.main.temp_min);
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  iconElement.setAttribute("src", getIcon(response.data.weather[0].icon));
+  iconElement.setAttribute("alt", getIcon(response.data.weather[0].icon));
 
   getForecast(response.data.coord);
 }
 
 let apiKey = "e89047cc8f695d58e8c95206ac2e49fe";
-let city = "Dublin,IE";
+let city = "St Peter Port";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
@@ -74,41 +79,43 @@ axios.get(apiUrl).then(displayTemperature);
 //Define Icons
 
 function getIcon(icon) {
-  let iconElement = "";
-  if (icon === "03d" || icon === "03n") {
-    iconElement = "images/cloud-sun-solid.svg"; //scattered clouds day/night
+  let iconElement = document.querySelector("#icon");
+  if (icon === "03d") {
+    iconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`; //scattered clouds day
+  } else if (icon === "03n") {
+    iconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`; //scattered clouds night
   } else if (icon === "04d") {
-    iconElement = "images/cloud-sun-solid.svg"; //broken clouds day
+    iconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`; //broken clouds day
   } else if (icon === "04n") {
-    iconElement = "images/cloud-moon-solid.svg"; //broken clouds night
+    iconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`; //broken clouds night
   } else if (icon === "01d") {
-    iconElement = "images/sun-solid.svg"; //clear day
+    iconElement.innerHTML = `<i class="fas fa-sun"></i>`; //clear day
   } else if (icon === "01n") {
-    iconElement = "images/moon-solid.svg"; //clear night
+    iconElement.innerHTML = `<i class="fas fa-moon"></i>`; //clear night
   } else if (icon === "02d") {
-    iconElement = "images/cloud-sun-solid.svg"; //partly cloudy day
+    iconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`; //partly cloudy day
   } else if (icon === "02n") {
-    iconElement = "images/cloud-moon-solid.svg"; //partly cloudy night
+    iconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`; //partly cloudy night
   } else if (icon === "09d") {
-    iconElement = "images/cloud-sun-rain-solid.svg"; //showers day
+    iconElement.innerHTML = `<i class="fas fa-cloud-sun-rain"></i>`; //showers day
   } else if (icon === "09n") {
-    iconElement = "images/cloud-moon-rain-solid.svg"; //showers night
+    iconElement.innerHTML = `<i class="fas fa-cloud-moon-rain"></i>`; //showers night
   } else if (icon === "10d") {
-    iconElement = "images/cloud-rain-solid.svg"; //mod-heavy rain day
+    iconElement.innerHTML = `<i class="fas fa-cloud-rain"></i>`; //mod-heavy rain day
   } else if (icon === "10n") {
-    iconElement = "images/cloud-rain-solid.svg"; //rain night
+    iconElement.innerHTML = `<i class="fas fa-cloud-rain"></i>`; //rain night
   } else if (icon === "11d") {
-    iconElement = "images/bolt-solid.svg"; //thunderstorm day
+    iconElement.innerHTML = `<i class="fas fa-bolt"></i>`; //thunderstorm day
   } else if (icon === "11n") {
-    iconElement = "images/bolt-solid.svg"; //thunderstorm night
+    iconElement.innerHTML = `<i class="fas fa-bolt"></i>`; //thunderstorm night
   } else if (icon === "13d") {
-    iconElement = "images/snowflake-regular.svg"; //snow day
+    iconElement.innerHTML = `<i class="far fa-snowflake"></i>`; //snow day
   } else if (icon === "13n") {
-    iconElement = "images/slowflake-regular.svg"; //snow night
+    iconElement.innerHTML = `<i class="far fa-snowflake"></i>`; //snow night
   } else if (icon === "50d") {
-    iconElement = "images/smog-solid.svg"; //mist day
+    iconElement.innerHTML = `<i class="fas fa-smog"></i>`; //mist day
   } else if (icon === "50n") {
-    iconElement = "images/smog-solid.svg"; //mist night
+    iconElement.innerHTML = `<i class="fas fa-smog"></i>`; //mist night
   }
   return iconElement;
 }
@@ -208,14 +215,14 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `    
-<div class="col-4 day">
+<div class="col-4 day" id="left-days">
           ${formatDay(forecastDay.dt)} </br> </br>
         </div>
       
         <div class="col-4 id=forecast-emoji" style="padding-right: 0px; padding-top: 6px; padding-left: 20px;">
           <img src="${getIcon(
             forecastDay.weather[0].icon
-          )}" id="forecast-icon"  /> </br> </br> 
+          )}" id="forecast-icon" /> </br> </br> 
         </div>
 
         <div class="col-4 temp">
@@ -230,4 +237,8 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-search("Dublin,IE");
+// Change Icon
+
+// Background Image
+
+search("St Peter Port");

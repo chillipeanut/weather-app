@@ -1,5 +1,4 @@
 body {
-  background-image: url("images/unsplash-clouds.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 600px;
@@ -9,6 +8,24 @@ body {
   margin: 10px auto 10px auto;
   font-family: var(--bs-font-sans-serif);
   color: #ebeffc;
+  line-height: normal;
+  background-image: url("");
+}
+
+#background-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 600px;
+  width: 600px;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.container {
+  padding-top: 10px;
+  width: 600px;
+  max-width: 600px;
 }
 
 .form {
@@ -34,7 +51,7 @@ body {
 
 .overview {
   font-size: 18px;
-  padding: 40px 0 0 15px;
+  padding: 20px 0 0 15px;
   font-family: var(--bs-font-sans-serif);
   font-weight: 500;
   width: 240px;
@@ -42,14 +59,21 @@ body {
   color: #ebeffc;
 }
 
+#left {
+  padding-left: 30px;
+}
+#left-days {
+  padding-left: 30px;
+}
+
 .time {
-  font-size: 18px;
   text-align: center;
   color: #ebeffc;
+  height: 25px;
 }
 
 #top-row {
-  height: 120px;
+  height: 90px;
 }
 
 #top-row .active {
@@ -71,7 +95,7 @@ a {
 }
 
 .details {
-  padding: 40px 0 0 0;
+  padding: 20px 0 0 0;
   font-size: 18px;
   text-align: right;
   color: #ebeffc;
@@ -124,6 +148,7 @@ img {
   max-width: 150px;
   padding: 0;
 }
+
 .align-items-start {
   width: 500px;
   margin-left: 24px;
@@ -156,12 +181,27 @@ img {
   text-align: center;
   color: #ebeffc;
 }
+#forecast-icon {
+  color: #ebeffc;
+}
 h5 {
   color: #ebeffc;
   font-size: 12px;
   text-align: center;
   margin-bottom: 0px;
   margin-top: 10px;
+}
+
+h6 {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 350;
+  font-size: 18px;
+}
+
+#desctiption:first-letter {
+  text-transform: capitalize;
 }
 
 #minTemp {
