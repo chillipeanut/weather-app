@@ -73,7 +73,7 @@ body {
 }
 
 #top-row {
-  height: 90px;
+  height: 70px;
 }
 
 #top-row .active {
@@ -147,6 +147,7 @@ img {
   margin: 0 auto;
   max-width: 150px;
   padding: 0;
+  height: 170px;
 }
 
 .align-items-start {
