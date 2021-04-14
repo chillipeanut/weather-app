@@ -74,6 +74,7 @@ body {
 
 #top-row {
   height: 70px;
+  line-height: 1.5;
 }
 
 #top-row .active {
@@ -182,9 +183,13 @@ img {
   text-align: center;
   color: #ebeffc;
 }
-#forecast-icon {
-  color: #ebeffc;
+#forecast-emoji {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 85px;
 }
+
 h5 {
   color: #ebeffc;
   font-size: 12px;

@@ -65,7 +65,9 @@ function displayTemperature(response) {
   highElement.innerHTML = Math.round(response.data.main.temp_max);
   lowElement.innerHTML = Math.round(response.data.main.temp_min);
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  iconElement.setAttribute("alt", getIcon(response.data.weather[0].icon));
+  iconElement.setAttribute("alt", getIcon);
+
+  iconElement.innerHTML = getIcon(response.data.weather[0].icon);
 
   getForecast(response.data.coord);
 }
@@ -79,43 +81,43 @@ axios.get(apiUrl).then(displayTemperature);
 //Define Icons
 
 function getIcon(icon) {
-  let iconElement = document.querySelector("#icon", "#forecast-icon");
+  let iconElement = "";
   if (icon === "03d") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`; //scattered clouds day
+    iconElement = `<i class="fas fa-cloud-sun"></i>`; //scattered clouds day
   } else if (icon === "03n") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`; //scattered clouds night
+    iconElement = `<i class="fas fa-cloud-moon"></i>`; //scattered clouds night
   } else if (icon === "04d") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`; //broken clouds day
+    iconElement = `<i class="fas fa-cloud-sun"></i>`; //broken clouds day
   } else if (icon === "04n") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`; //broken clouds night
+    iconElement = `<i class="fas fa-cloud-moon"></i>`; //broken clouds night
   } else if (icon === "01d") {
-    iconElement.innerHTML = `<i class="fas fa-sun"></i>`; //clear day
+    iconElement = `<i class="fas fa-sun"></i>`; //clear day
   } else if (icon === "01n") {
-    iconElement.innerHTML = `<i class="fas fa-moon"></i>`; //clear night
+    iconElement = `<i class="fas fa-moon"></i>`; //clear night
   } else if (icon === "02d") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`; //partly cloudy day
+    iconElement = `<i class="fas fa-cloud-sun"></i>`; //partly cloudy day
   } else if (icon === "02n") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`; //partly cloudy night
+    iconElement = `<i class="fas fa-cloud-moon"></i>`; //partly cloudy night
   } else if (icon === "09d") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-sun-rain"></i>`; //showers day
+    iconElement = `<i class="fas fa-cloud-sun-rain"></i>`; //showers day
   } else if (icon === "09n") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-moon-rain"></i>`; //showers night
+    iconElement = `<i class="fas fa-cloud-moon-rain"></i>`; //showers night
   } else if (icon === "10d") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-rain"></i>`; //mod-heavy rain day
+    iconElement = `<i class="fas fa-cloud-rain"></i>`; //mod-heavy rain day
   } else if (icon === "10n") {
-    iconElement.innerHTML = `<i class="fas fa-cloud-rain"></i>`; //rain night
+    iconElement = `<i class="fas fa-cloud-rain"></i>`; //rain night
   } else if (icon === "11d") {
-    iconElement.innerHTML = `<i class="fas fa-bolt"></i>`; //thunderstorm day
+    iconElement = `<i class="fas fa-bolt"></i>`; //thunderstorm day
   } else if (icon === "11n") {
-    iconElement.innerHTML = `<i class="fas fa-bolt"></i>`; //thunderstorm night
+    iconElement = `<i class="fas fa-bolt"></i>`; //thunderstorm night
   } else if (icon === "13d") {
-    iconElement.innerHTML = `<i class="far fa-snowflake"></i>`; //snow day
+    iconElement = `<i class="far fa-snowflake"></i>`; //snow day
   } else if (icon === "13n") {
-    iconElement.innerHTML = `<i class="far fa-snowflake"></i>`; //snow night
+    iconElement = `<i class="far fa-snowflake"></i>`; //snow night
   } else if (icon === "50d") {
-    iconElement.innerHTML = `<i class="fas fa-smog"></i>`; //mist day
+    iconElement = `<i class="fas fa-smog"></i>`; //mist day
   } else if (icon === "50n") {
-    iconElement.innerHTML = `<i class="fas fa-smog"></i>`; //mist night
+    iconElement = `<i class="fas fa-smog"></i>`; //mist night
   }
   return iconElement;
 }
@@ -219,7 +221,7 @@ function displayForecast(response) {
           ${formatDay(forecastDay.dt)} </br> </br>
         </div>
       
-        <div class="col-4 id=forecast-emoji" style="padding-right: 0px; padding-top: 6px; padding-left: 20px;">
+        <div class="col-4 id=forecast-emoji" style="padding-right: 0px; padding-top: 6px; padding-left: 85px;">
           <span id=#forecast-icon">${getIcon(
             forecastDay.weather[0].icon
           )}<span/> </br> </br> 
