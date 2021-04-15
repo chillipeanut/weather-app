@@ -221,7 +221,7 @@ function displayForecast(response) {
           ${formatDay(forecastDay.dt)} </br> </br>
         </div>
       
-        <div class="col-4 id=forecast-emoji" style="padding-right: 0px; padding-top: 6px; padding-left: 85px;">
+        <div class="col-4 id=forecast-emoji" style="padding-right: 0px; padding-left: 88px; font-size: 20px;">
           <span id=#forecast-icon">${getIcon(
             forecastDay.weather[0].icon
           )}<span/> </br> </br> 
